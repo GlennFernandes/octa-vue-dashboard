@@ -1,11 +1,11 @@
 <template>
   <div class="logo">
-    <img alt="Octalogic logo" src="../assets/logo.png">
+    <img class="md-image" alt="Octalogic logo" src="../assets/logo.png">
   </div>
 </template>
 
 <script>
-export default { name: 'HelloWorld' };
+export default { name: 'Logo' };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
