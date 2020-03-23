@@ -126,7 +126,7 @@ export default {
           );
           this.validating = false;
           this.clearForm();
-          this.$router.replace({ name: 'Home' });
+          this.$router.replace({ name: 'Dashboard' });
         })
         .catch((err) => {
           this.validating = false;

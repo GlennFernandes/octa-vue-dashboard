@@ -1,6 +1,9 @@
 import Vue from 'vue';
 
 import {
+  MdApp,
+  MdToolbar,
+  MdList,
   MdButton,
   MdContent,
   MdCard,
@@ -9,10 +12,13 @@ import {
   MdField,
   MdProgress,
   MdSnackbar,
+  MdIcon,
 } from 'vue-material/dist/components';
 import 'vue-material/dist/vue-material.min.css';
-import 'vue-material/dist/theme/default-dark.css';
+// import 'vue-material/dist/theme/default.css';
+
 import * as firebase from 'firebase';
+import VueMq from 'vue-mq';
 
 import App from './App.vue';
 import './registerServiceWorker';
@@ -21,6 +27,9 @@ import store from './store';
 
 // https://github.com/vuematerial/vue-material/issues/662
 
+Vue.use(MdApp);
+Vue.use(MdToolbar);
+Vue.use(MdList);
 Vue.use(MdButton);
 Vue.use(MdContent);
 Vue.use(MdCard);
@@ -29,6 +38,18 @@ Vue.use(MdDrawer);
 Vue.use(MdField);
 Vue.use(MdProgress);
 Vue.use(MdSnackbar);
+Vue.use(MdIcon);
+
+
+Vue.use(VueMq, {
+  breakpoints: {
+    xsmall: 599,
+    small: 959,
+    medium: 1279,
+    large: 1919,
+    xlarge: Infinity,
+  }
+})
 
 Vue.config.productionTip = false;
 
