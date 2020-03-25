@@ -1,0 +1,45 @@
+@import './utilities.scss';
+
+$primary-light: #87E4C7;
+$primary: #74C9AE;
+$primary-dark: #34CCB2;
+
+$accent-light: #F78FBE;
+$accent: #F961A7;
+$accent-dark: #E5487A;
+
+$gray-100:#E5E5E5;
+$gray-200:#CCCCCC;
+$gray-300:#B2B2B2;
+$gray-400:#999999;
+$gray-500:#7F7F7F;
+$gray-600:#666666;
+$gray-700:#4C4C4C;
+$gray-800:#323232;
+$gray-900:#191919;
+
+
+.md-drawer {
+  width: 250px;
+  background-color: $gray-700;
+  overflow-x: visible!important;
+  overflow-y: visible!important;
+}
+
+.md-list{
+  background-color: $gray-700;
+  // margin:20 0px;
+}
+
+.md-toolbar{
+  background-color: $gray-700;
+}
+
+.md-content{
+  background-color: $gray-800;
+}
+
+.md-app {
+  min-height: 100%;
+  border: 1px solid rgba(#000, 0.12);
+}
