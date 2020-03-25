@@ -42,7 +42,7 @@
           </md-field>
           <md-button
             type="submit"
-            class="md-raised md-primary login__btn"
+            class="md-raised md-accent login__btn"
             >Login</md-button
           >
         </form>

@@ -6,12 +6,12 @@
 
 <style lang="scss">
 @import '~vue-material/dist/theme/engine'; // Import the theme engine
-
+@import './assets/css/settings.scss';
 @include md-register-theme(
   'default',
   (
-    primary: #34CCB2,
-    accent: #F961A7,
+    primary: $primary,
+    accent: $accent,
     theme: dark
   )
 );
