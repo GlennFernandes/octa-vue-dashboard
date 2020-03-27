@@ -1,12 +1,12 @@
 <template>
   <div>
-    Dashboard Component
+    Clients Component
   </div>
 </template>
 
 <script>
 
-export default { name: 'Dashboard', };
+export default { name: 'Clients', };
 </script>
 
 <style lang="scss" scoped>
