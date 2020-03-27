@@ -6,30 +6,34 @@
       </div>
       <div class="md-toolbar-section-end">
         <md-button
-          class="md-icon-button md-dense"
-           @click="toggleMenu"
+          class="md-icon-button"
+          @click="toggleMenu"
+          v-if="isMobile"
         >
-       
-          <md-icon>keyboard_arrow_left</md-icon>
+          <md-icon>chevron_left</md-icon>
         </md-button>
       </div>
     </md-toolbar>
     <md-list>
-      <router-link to="/">
+      <router-link to="/dashboard">
         <md-list-item>
           <md-icon>dashboard</md-icon>
           <span class="md-list-item-text">Dashboard</span>
         </md-list-item>
       </router-link>
 
-      <md-list-item>
-        <md-icon>send</md-icon>
-        <span class="md-list-item-text">Sent Mail</span>
-      </md-list-item>
+      <router-link to="/categories">
+        <md-list-item>
+          <md-icon>category</md-icon>
+          <span class="md-list-item-text">Categories</span>
+        </md-list-item>
+      </router-link>
 
       <md-list-item>
         <md-icon>delete</md-icon>
-        <span class="md-list-item-text">{{this.menuVisible}}</span>
+        <span class="md-list-item-text">
+          Delete
+        </span>
       </md-list-item>
 
       <md-list-item>
@@ -45,13 +49,13 @@ import Logo from '@/components/Logo.vue';
 
 export default {
   name: 'Sidebar',
-    props: ['menuVisible'],
-    methods: {
-      toggleMenu() {
-        this.$emit('toggleMenu');
-      },
+  props: ['isMobile'],
+  methods: {
+    toggleMenu() {
+      this.$emit('toggleMenu');
     },
-    components: { Logo },
+  },
+  components: { Logo },
 };
 </script>
 

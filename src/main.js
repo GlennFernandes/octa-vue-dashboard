@@ -72,12 +72,11 @@ firebase.auth().onAuthStateChanged((user) => {
 
 router.beforeEach((to, from, next) => {
   const isAuthenticated = store.state.auth.user.loggedIn;
-  console.log(to.name,isAuthenticated);
   if (to.name !== 'Login' && !isAuthenticated){
     next({ name: 'Login' });
   }
   else if(to.name ==='Login' && isAuthenticated){
-    next({ name: 'Home' });
+    next({ name: 'Dashboard' });
   }
   else next();
 });

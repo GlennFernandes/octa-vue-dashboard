@@ -1,7 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Dashboard from '../views/Dashboard.vue';
 import Login from '../views/Login.vue';
+import Dashboard from '../views/Dashboard.vue';
+import Categories from '../views/Categories.vue';
+
 
 Vue.use(VueRouter);
 
@@ -15,6 +17,11 @@ const routes = [
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard,
+  },
+  {
+    path: '/categories',
+    name: 'Categories',
+    component: Categories,
   },
   {
     path: '/about',

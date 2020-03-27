@@ -2,49 +2,41 @@
   <div class="page-container">
     <md-app>
       <md-app-toolbar>
-        <toolbar v-bind:menuVisible="menuVisible" @toggleMenu="toggleMenu"></toolbar>
+        <toolbar
+          v-bind:menuVisible="menuVisible"
+          @toggleMenu="toggleMenu"
+        ></toolbar>
       </md-app-toolbar>
 
       <md-app-drawer
-        md-swipeable
+        md-permanent="full"
         :md-active.sync="menuVisible"
-        md-persistent="mini"
+        md-swipeable
       >
-        <sidebar v-bind:menuVisible="menuVisible" @toggleMenu="toggleMenu"></sidebar>
+        <sidebar
+          v-bind:isMobile="isMobile"
+          @toggleMenu="toggleMenu"
+        ></sidebar>
       </md-app-drawer>
 
-      <md-app-content>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        Error quibusdam, non molestias et! Earum magnam,
-        similique, quo recusandae placeat dicta asperiores modi
-        sint ea.
-      </md-app-content>
+      <md-app-content> </md-app-content>
     </md-app>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
-// import firebase from 'firebase';
-// import Logo from '@/components/Logo.vue';
 import Sidebar from '@/components/Sidebar.vue';
 import Toolbar from '@/components/Toolbar.vue';
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue';
 
 export default {
   name: 'Dashboard',
-  computed: {
-    ...mapGetters({
-      // map `this.user` to `this.$store.getters.user`
-      user: 'getUserDetails',
-    }),
-  },
   data: () => {
-    return { menuVisible: true };
+    return {
+      menuVisible: window.innerWidth > 600,
+      isMobile: window.innerWidth < 600,
+    };
   },
   methods: {
-    ...mapActions({ fetchUser: 'fetchUser' }),
     toggleMenu() {
       this.menuVisible = !this.menuVisible;
     },
