@@ -1,12 +1,12 @@
 <template>
   <div>
-    Dashboard Component
+    Technologies Component
   </div>
 </template>
 
 <script>
 
-export default { name: 'Dashboard', };
+export default { name: 'Technologies', };
 </script>
 
 <style lang="scss" scoped>

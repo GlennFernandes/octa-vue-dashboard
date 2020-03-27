@@ -1,15 +1,15 @@
 <template>
   <div class="w-100 d-flex flex-row justify-content-between">
-    <md-button
-      class="md-icon-button"
-      @click="toggleMenu"
-      v-if="!menuVisible"
-    >
-      <md-icon>menu</md-icon>
-    </md-button>
-    <span class="md-title">{{
-      getPageName
-    }}</span>
+    <div>
+      <md-button
+        class="md-icon-button menu"
+        @click="toggleMenu"
+      >
+        <md-icon>menu</md-icon>
+      </md-button>
+      <span class="md-title">{{ getPageName }}</span>
+    </div>
+
     <md-button class="md-icon-button" @click="signOut">
       <md-icon>exit_to_app</md-icon>
     </md-button>
@@ -18,20 +18,22 @@
 
 <script>
 import firebase from 'firebase';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
-    name: "Toolbar",
-    props : ['menuVisible'],
-    computed: {
+  name: 'Toolbar',
+  computed: {
     getPageName() {
       return this.$route.name;
     },
+    ...mapGetters({ user: 'getUserDetails' }),
   },
-    methods: {
-      toggleMenu() {
-        this.$emit('toggleMenu');
-      },
-      signOut() {
+  methods: {
+    ...mapActions({ fetchUser: 'fetchUser' }),
+    toggleMenu() {
+      this.$emit('toggleMenu');
+    },
+    signOut() {
       firebase
         .auth()
         .signOut()
@@ -40,12 +42,22 @@ export default {
           this.$router.replace({ name: 'Login' });
         });
     },
-    },
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-.md-title{
+.md-title {
   line-height: 45px;
+}
+
+.menu {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .menu {
+    display: inline-block;
+  }
 }
 </style>
