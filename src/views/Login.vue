@@ -9,7 +9,7 @@
       <md-card-content>
         <div class="md-layout md-alignment-center-center">
           <div
-            class="md-layout-item md-xsmall-size-30 md-small-size-20 md-medium-size-30"
+            class="login__logo md-layout-item md-xsmall-size-30 md-small-size-20 md-medium-size-30"
           >
             <Logo />
           </div>
@@ -63,7 +63,8 @@
 </template>
 
 <script>
-import firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
 import { validationMixin } from 'vuelidate';
 import { required } from 'vuelidate/lib/validators';
 // @ is an alias to /src
@@ -109,7 +110,7 @@ export default {
       this.snackbar.display = true;
       this.snackbar.message = message;
     },
-    ...mapActions({ fetchUser: 'fetchUser', }),
+    ...mapActions({ setUser: 'setUser', }),
     loginUser() {
       this.validating = true;
       this.showSnackbar('Logging you in. Please wait!');
@@ -120,7 +121,7 @@ export default {
           this.form.password,
         )
         .then((data) => {
-          this.fetchUser(data.user);
+          this.setUser(data.user);
           this.showSnackbar(
             'Succesfuly logged in! You are being redirected',
           );
@@ -153,7 +154,13 @@ export default {
   &__btn {
     width: 100%;
   }
+
+  &__logo{
+    height:100px;
+  }
 }
+
+
 
 .md-progress-bar {
   position: absolute;

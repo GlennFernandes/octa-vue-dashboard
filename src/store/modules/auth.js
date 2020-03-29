@@ -19,15 +19,22 @@ export default {
     },
   },
   actions: {
-    fetchUser({ commit }, user) {
+    setUser({ commit }, user) {
       commit('SET_LOGGED_IN', user !== null);
       if (user) {
-        commit('SET_USER', {
-          displayName: user.displayName,
-          email: user.email,
+        user.getIdToken().then((data) => {
+          commit('SET_USER', {
+            displayName: user.displayName,
+            email: user.email,
+            token: data,
+          });
+
+          localStorage.setItem('token', data);
+
         });
       } else {
         commit('SET_USER', null);
+        localStorage.setItem('token', null);
       }
     },
   },

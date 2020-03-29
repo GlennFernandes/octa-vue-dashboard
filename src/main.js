@@ -13,17 +13,24 @@ import {
   MdProgress,
   MdSnackbar,
   MdIcon,
+  MdTable,
+  MdCheckbox,
+  MdDialog,
+  MdMenu,
+  MdEmptyState,
 } from 'vue-material/dist/components';
 import 'vue-material/dist/vue-material.min.css';
 // import 'vue-material/dist/theme/default.css';
 
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
 import VueMq from 'vue-mq';
 
 import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 import store from './store';
+import firebaseConfig from './constants/firebase';
 
 // https://github.com/vuematerial/vue-material/issues/662
 
@@ -39,7 +46,11 @@ Vue.use(MdField);
 Vue.use(MdProgress);
 Vue.use(MdSnackbar);
 Vue.use(MdIcon);
-
+Vue.use(MdTable);
+Vue.use(MdCheckbox);
+Vue.use(MdDialog);
+Vue.use(MdMenu);
+Vue.use(MdEmptyState);
 
 Vue.use(VueMq, {
   breakpoints: {
@@ -48,37 +59,24 @@ Vue.use(VueMq, {
     medium: 1279,
     large: 1919,
     xlarge: Infinity,
-  }
-})
+  },
+});
 
 Vue.config.productionTip = false;
 
-const configOptions = {
-  apiKey: 'AIzaSyBsMfgsHNyypJnmf96tT0OLo8UMFY-ZMNE',
-  authDomain: 'octalogic-portfolio-dev.firebaseapp.com',
-  databaseURL: 'https://octalogic-portfolio-dev.firebaseio.com',
-  projectId: 'octalogic-portfolio-dev',
-  storageBucket: 'octalogic-portfolio-dev.appspot.com',
-  messagingSenderId: '972342187770',
-  appId: '1:972342187770:web:f425e591de136a72359b43',
-  measurementId: 'G-LM82D4HJDN',
-};
-
-firebase.initializeApp(configOptions);
+firebase.initializeApp(firebaseConfig);
 
 firebase.auth().onAuthStateChanged((user) => {
-  store.dispatch('fetchUser', user);
+  store.dispatch('setUser', user);
 });
 
 router.beforeEach((to, from, next) => {
   const isAuthenticated = store.state.auth.user.loggedIn;
-  if (to.name !== 'Login' && !isAuthenticated){
+  if (to.name !== 'Login' && !isAuthenticated) {
     next({ name: 'Login' });
-  }
-  else if(to.name ==='Login' && isAuthenticated){
+  } else if (to.name === 'Login' && isAuthenticated) {
     next({ name: 'Dashboard' });
-  }
-  else next();
+  } else next();
 });
 
 new Vue({
