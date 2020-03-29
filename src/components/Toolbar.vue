@@ -17,7 +17,8 @@
 </template>
 
 <script>
-import firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
@@ -29,7 +30,7 @@ export default {
     ...mapGetters({ user: 'getUserDetails' }),
   },
   methods: {
-    ...mapActions({ fetchUser: 'fetchUser' }),
+    ...mapActions({ setUser: 'setUser' }),
     toggleMenu() {
       this.$emit('toggleMenu');
     },
@@ -38,7 +39,7 @@ export default {
         .auth()
         .signOut()
         .then(() => {
-          this.fetchUser(null);
+          this.setUser(null);
           this.$router.replace({ name: 'Login' });
         });
     },

@@ -18,6 +18,10 @@ $gray-700:#4C4C4C;
 $gray-800:#323232;
 $gray-900:#191919;
 
+body{
+  font-family: Comfortaa, Roboto, sans-serif;
+}
+
 
 .md-drawer {
   width: 250px;
@@ -40,4 +44,37 @@ $gray-900:#191919;
 .md-app {
   min-height: 100%;
   border: 1px solid rgba(#000, 0.12);
+}
+
+.md-dialog-title {
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.md-dialog-container{
+  min-width: 40vw;
+}
+
+.accent-button{
+  color:white!important;
+}
+
+.md-table-content{
+  width:100%;
+  max-height:70vh!important;
+  height:70vh!important;
+}
+
+.md-table-fixed-header tr{
+  overflow-x: auto;
+}
+
+@media (max-width: 600px) {
+  .md-dialog-container{
+    min-width: 90vw;
+  }
+}
+
+.form-body{
+  flex:1;
 }

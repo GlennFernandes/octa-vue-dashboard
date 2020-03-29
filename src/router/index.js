@@ -5,7 +5,7 @@ import Login from '../views/Login.vue';
 import DashboardLayout from '../layouts/DashboardLayout.vue';
 
 import Dashboard from '../views/Dashboard.vue';
-import Categories from '../views/Categories.vue';
+import CategoriesView from '../views/Categories/CategoriesView.vue';
 import Technologies from '../views/Technologies.vue';
 import Clients from '../views/Clients.vue';
 import Projects from '../views/Projects.vue';
@@ -29,7 +29,7 @@ const routes = [
     path: '/categories',
     name: 'Categories',
     component: DashboardLayout,
-    props: { childComponent: Categories },
+    props: { childComponent: CategoriesView },
   },
   {
     path: '/technologies',
